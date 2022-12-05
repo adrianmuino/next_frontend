@@ -3,11 +3,11 @@ import Head from 'next/head';
 import Layout from '../../components/layout';
 import Alert from '../../components/alert';
 
-export default function FirstPost() {
+export default function SampleStaticURL() {
     return(
         <Layout>
             <Head>
-                <title>First Post</title>
+                <title>Sample Static URL Post</title>
             </Head>
             <h1>First Post</h1>
             <h2>
