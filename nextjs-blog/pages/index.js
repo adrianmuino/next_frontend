@@ -10,6 +10,15 @@ export default function Home({ allPostsData }) {
     <Layout home>
       <Head>
         <title>{siteTitle}</title>
+        <meta name="robots" content="all" />
+        {/* <meta name="robots" content="noindex,nofollow" /> */}
+        <meta name="google" content="nositelinkssearchbox" key="sitelinks" />
+        <meta name="google" content="notranslate" key="notranslate" />
+        <link
+          rel="canonical"
+          href="https://mysampledomain.com/sample/endpoint"
+          key="canonical"
+        />
       </Head>
       <section className={utilStyles.headingMd}>
         <p>[Software Engineer at Kaseya]</p>
