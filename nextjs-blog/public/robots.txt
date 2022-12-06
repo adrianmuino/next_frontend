@@ -1,0 +1,15 @@
+# Block all crawlers for /admin
+User-agent: *
+Disallow: /admin
+
+# Allow Googlebot crawler for /posts
+User-agent: Googlebot
+Allow: /posts
+
+# Allow Applebot crawler for /posts
+User-agent: Applebot
+Allow: /posts
+
+# Allow all crawlers for /
+User-agent: *
+Allow: /
