@@ -19,6 +19,11 @@ export default function Home({ allPostsData }) {
           href="https://mysampledomain.com/sample/endpoint"
           key="canonical"
         />
+        <meta
+          name="description"
+          content="Sample blog website built with Next.js by Adrian Muino."
+          key="desc"
+        />
       </Head>
       <section className={utilStyles.headingMd}>
         <p>[Software Engineer at Kaseya]</p>
