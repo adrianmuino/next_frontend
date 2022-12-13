@@ -3,10 +3,18 @@ import Layout from '../../components/layout';
 import Date from '../../components/date';
 import { getAllPostIds, getPostData } from '../../utils/posts';
 import utilStyles from '../../styles/utils.module.css'
+import { GetStaticProps, GetStaticPaths } from 'next';
+import { ParsedUrlQuery } from 'querystring';
 
-export default function Post({ postData }) {
+export default function Post({ postData }: {
+  postData: {
+    title: string,
+    date: string,
+    contentHtml: string
+  }
+}) {
   return(
-    <Layout>
+    <Layout home={false} >
         <Head>
             <title>{postData.title}</title>
         </Head>
@@ -21,9 +29,13 @@ export default function Post({ postData }) {
   );
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   // Return a list of possible value for id
-  const paths = getAllPostIds();
+  const paths: { 
+    params: {
+      id: string;
+    };
+  }[] = getAllPostIds();
   return {
     paths,
     fallback: false,
@@ -55,9 +67,14 @@ export async function getStaticPaths() {
 
 }
 
-export async function getStaticProps({ params }) {
+interface Params extends ParsedUrlQuery {
+  id: string
+}
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   // Fetch necessary data for the blog post using params.id
-  const postData = await getPostData(params.id);
+  const { id } = params as Params
+  const postData = await getPostData(id);
   return {
     props: {
       postData,

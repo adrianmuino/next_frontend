@@ -4,10 +4,14 @@ import styles from './layout.module.css';
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
 
-const name = 'Adrian Muino';
-export const siteTitle = 'Next.js Sample Website - Next.js Blog';
+const name: string = 'Adrian Muino';
+export const siteTitle: string = 'Next.js Sample Website - Next.js Blog';
 
-export default function Layout({ children, home }) {
+export default function Layout({ children, home }: {
+  children: any;
+  home: boolean;
+}) {
+  
   return (
     <div className={styles.container}>
       <Head>

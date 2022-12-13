@@ -4,10 +4,17 @@ import Layout, { siteTitle } from '../components/layout';
 import Date from '../components/date';
 import utilStyles from '../styles/utils.module.css';
 import { getSortedPostsData } from '../utils/posts';
+import { GetStaticProps } from 'next';
 
-export default function Home({ allPostsData }) {
+export default function Home({ allPostsData }: {
+  allPostsData: {
+    id: string,
+    date: string,
+    title: string
+  }
+}) {
   return (
-    <Layout home>
+    <Layout home={true} >
       <Head>
         <title>{siteTitle}</title>
         <meta name="robots" content="all" />
@@ -35,7 +42,7 @@ export default function Home({ allPostsData }) {
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
+          {Array.isArray(allPostsData) && allPostsData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
               <Link href={`/posts/${id}`} passHref>{title}</Link>
               <br />
@@ -50,7 +57,7 @@ export default function Home({ allPostsData }) {
   );
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   // Get external data from the file system, API, DB, etc.
   const allPostsData = getSortedPostsData();
 

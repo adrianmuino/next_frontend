@@ -54,7 +54,7 @@ export default function SampleStaticURL() {
         };
     }
     return(
-        <Layout>
+        <Layout home={false}>
             <Head>
                 <title>Sample Static URL Post</title>
                 <script
